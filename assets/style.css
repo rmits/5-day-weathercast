@@ -24,6 +24,7 @@ body {
 
 .currentWeatherCard {
     border: 2px solid white;
+    padding: 3px;
 }
 
 #searchButton {
