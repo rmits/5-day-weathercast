@@ -12,8 +12,13 @@ body {
     color: white;
 }
 
-.searchContainer {
+.cardContainer {
+    display: flex;
     flex-direction: row;
+}
+
+.searchContainer, .weatherContainer {
+    flex-direction: column;
     display: flex;
 }
 
@@ -23,8 +28,8 @@ body {
 }
 
 .currentWeatherCard {
-    border: 2px solid white;
-    padding: 3px;
+    padding: 3px 800px 3px 3px;
+    font-size: 14px;
 }
 
 #searchButton {
