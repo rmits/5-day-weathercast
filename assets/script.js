@@ -44,9 +44,9 @@ function currentWeatherCompleter(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
-      var currentWeatherCard = document.querySelector('.currentWeatherCard');
-      currentWeatherCard.innerHTML = '';
-      currentWeatherCard.style.border = '5px solid orangered';
+      var weatherContainer = document.querySelector('.weatherContainer');
+      var currentWeatherCard = document.createElement('div');
+      currentWeatherCard.classList.add('currentWeatherCard');
 
       var currentTitle = document.createElement('h2');
       currentTitle.textContent = data.name + " (Today)";
@@ -68,13 +68,13 @@ function currentWeatherCompleter(lat, lon) {
       currentWeatherCard.appendChild(currentTemp);
       currentWeatherCard.appendChild(currentWind);
       currentWeatherCard.appendChild(currentHumidity);
+      weatherContainer.appendChild(currentWeatherCard);
     })
 }
 
-//this function completes the initial fetch for the 5 day call, where it generates HTMl elements
+// this function completes the initial fetch for the 5 day call, where it generates HTMl elements
 function fiveDayCompleter(lat, lon) {
-  var cnt = 5;
-  var requestURL = `api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`;
+  var requestURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial`;
 
   fetch(requestURL)
     .then(function (response) {
@@ -82,19 +82,25 @@ function fiveDayCompleter(lat, lon) {
     })
     .then(function (data) {
       console.log(data);
-      var fiveDayCard = document.querySelector('.fiveDayCard');
-      var weatherContainter = document.querySelector('.weatherContainer');
-      fiveDayCard.innerHTML = '';
+      var weatherContainer = document.querySelector('.weatherContainer');
+      var forecastContainer = document.createElement('div');
+      forecastContainer.classList.add('forecastContainer');
 
       var forecastData = data.list;
 
       // Loop through the forecast data for each day
-      for (var i = 0; i < forecastData.length; i++) {
+      for (var i = 0; i < forecastData.length; i += 8) {
         var forecast = forecastData[i];
         var forecastDate = new Date(forecast.dt * 1000); // Convert Unix timestamp to date
 
+        var forecastCard = document.createElement('div');
+        forecastCard.classList.add('forecastCard');
+
         var dateElement = document.createElement('h2');
         dateElement.textContent = forecastDate.toDateString();
+
+        var iconElement = document.createElement('img');
+        iconElement.src = 'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '.png';
 
         var temperatureElement = document.createElement('p');
         temperatureElement.textContent = "Temperature: " + forecast.main.temp + "°F";
@@ -102,16 +108,20 @@ function fiveDayCompleter(lat, lon) {
         var weatherElement = document.createElement('p');
         weatherElement.textContent = "Weather: " + forecast.weather[0].description;
 
-        fiveDayCard.appendChild(dateElement);
-        fiveDayCard.appendChild(temperatureElement);
-        fiveDayCard.appendChild(weatherElement);
-        weatherContainter.appendChild(fiveDayCard);
-      }
+        forecastCard.appendChild(dateElement);
+        forecastCard.appendChild(iconElement);
+        forecastCard.appendChild(temperatureElement);
+        forecastCard.appendChild(weatherElement);
+
+        forecastContainer.appendChild(forecastCard);
+      } 
+        weatherContainer.appendChild(forecastContainer);
     });
 }
 
-//this function is the intial fetch, where it grabs the coordinates of the user input city and then passes
-//the necessary latitude and longitude to the currentWeatherCompleter function
+
+// this function is the intial fetch, where it grabs the coordinates of the user input city and then passes
+// the necessary latitude and longitude to the currentWeatherCompleter function
 function currentWeatherGetApi() {
   var citySearch = document.querySelector('.citySearch');
   var citySearchInput = citySearch.value;
@@ -126,6 +136,9 @@ function currentWeatherGetApi() {
       console.log(data);
       var latitude = data[0].lat;
       var longitude = data[0].lon;
+
+      var weatherContainer = document.querySelector('.weatherContainer');
+      weatherContainer.innerHTML = '';
       currentWeatherCompleter(latitude, longitude);
       fiveDayCompleter(latitude, longitude);
     }
@@ -149,7 +162,11 @@ function storageGetAPI(event) {
       console.log(data);
       var latitude = data[0].lat;
       var longitude = data[0].lon;
+      
+      var weatherContainer = document.querySelector('.weatherContainer');
+      weatherContainer.innerHTML = '';
       currentWeatherCompleter(latitude, longitude);
+      fiveDayCompleter(latitude, longitude);
     }
     );
 }
