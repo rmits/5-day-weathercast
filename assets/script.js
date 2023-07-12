@@ -141,8 +141,7 @@ function currentWeatherGetApi() {
       weatherContainer.innerHTML = '';
       currentWeatherCompleter(latitude, longitude);
       fiveDayCompleter(latitude, longitude);
-    }
-    );
+    });
 }
 
 //this function is inside of my renderLocal function, it does a fetch for the text of the button that is
