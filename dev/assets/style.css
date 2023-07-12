@@ -1,0 +1,126 @@
+header {
+    background-color: orangered;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 22px;
+}
+
+body {
+    font-family: 'Indie Flower', cursive;
+    background-color: black;
+    color: white;
+}
+
+#weatherTitle {
+  display: none;
+  text-align: center;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchContainer, .weatherContainer {
+    flex-direction: column;
+    display: flex;
+}
+
+.searchContainer {
+  border: 4px solid orangered;
+  padding: 4px;
+}
+
+.searchCard {
+    justify-content: left;
+    text-align: left;
+}
+
+.forecastContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.forecastCard {
+  background-color: orangered;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding: 2px;
+  font-size: 14px;
+}
+
+.currentWeatherCard {
+    padding: 5px;
+    font-size: 14px;
+    display: inline-block;
+    width: auto;
+}
+
+#searchButton, #clearBtn {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  width: auto;
+  z-index: 0;
+}
+
+.historyBtn {
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.historyBtn:hover, #searchButton:hover, #clearBtn:hover {
+  border-color: orangered;
+  color: orangered;
+  fill: orangered;
+}
+
+.historyBtn:active, #searchButton:active, #clearBtn:active {
+  border-color: orangered;
+  color: orangered;
+  fill: orangered;
+}
