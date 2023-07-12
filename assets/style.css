@@ -12,6 +12,10 @@ body {
     color: white;
 }
 
+#weatherTitle {
+  display: none;
+  text-align: center;
+}
 .cardContainer {
     display: flex;
     flex-direction: row;
@@ -22,14 +26,36 @@ body {
     display: flex;
 }
 
+.searchContainer {
+  border: 4px solid orangered;
+  padding: 4px;
+}
+
 .searchCard {
     justify-content: left;
     text-align: left;
 }
 
+.forecastContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.forecastCard {
+  background-color: orangered;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding: 2px;
+  font-size: 14px;
+}
+
 .currentWeatherCard {
-    padding: 3px 800px 3px 3px;
+    padding: 5px;
     font-size: 14px;
+    display: inline-block;
+    width: auto;
 }
 
 #searchButton, #clearBtn {
