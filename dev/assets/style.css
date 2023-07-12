@@ -16,6 +16,7 @@ body {
   display: none;
   text-align: center;
 }
+
 .cardContainer {
     display: flex;
     flex-direction: row;

@@ -6,7 +6,7 @@
 
 This is a weather application where you have the ability to search by a city name, and then you are displayed the current weather, along with a 5-day forecast! The information is pulled from the OpenWeatherMap.org API
 
-<img src="./assets/images/Untitled_ Jul 12, 2023 1_31 PM.gif" alt="Project GIF">
+<img src="./dev/assets/images/Untitled_ Jul 12, 2023 1_31 PM.gif" alt="Project GIF">
 
 ## Table of Contents
 
