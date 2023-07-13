@@ -52,7 +52,7 @@ function currentWeatherCompleter(lat, lon) {
       currentTitle.textContent = data.name + " (Today)";
 
       var currentImage = document.createElement('img');
-      currentImage.src = 'http://openweathermap.org/img/wn/' + data.weather[0].icon + '.png';
+      currentImage.src = 'https://openweathermap.org/img/wn/' + data.weather[0].icon + '.png';
 
       var currentTemp = document.createElement('h3');
       currentTemp.textContent = "Current Temperature: " + data.main.temp + "°F";
@@ -100,7 +100,7 @@ function fiveDayCompleter(lat, lon) {
         dateElement.textContent = forecastDate.toDateString();
 
         var iconElement = document.createElement('img');
-        iconElement.src = 'http://openweathermap.org/img/wn/' + forecast.weather[0].icon + '.png';
+        iconElement.src = 'https://openweathermap.org/img/wn/' + forecast.weather[0].icon + '.png';
 
         var temperatureElement = document.createElement('p');
         temperatureElement.textContent = "Temperature: " + forecast.main.temp + "°F";
@@ -126,7 +126,7 @@ function currentWeatherGetApi() {
   var citySearch = document.querySelector('.citySearch');
   var citySearchInput = citySearch.value;
 
-  var requestUrlOne = `http://api.openweathermap.org/geo/1.0/direct?q=${citySearchInput}&appid=${API_KEY}`;
+  var requestUrlOne = `https://api.openweathermap.org/geo/1.0/direct?q=${citySearchInput}&appid=${API_KEY}`;
 
   fetch(requestUrlOne)
     .then(function (response) {
@@ -151,7 +151,7 @@ function storageGetAPI(event) {
   var buttonText = button.textContent;
   console.log(buttonText);
 
-  var requestUrlOne = `http://api.openweathermap.org/geo/1.0/direct?q=${buttonText}&appid=${API_KEY}`;
+  var requestUrlOne = `https://api.openweathermap.org/geo/1.0/direct?q=${buttonText}&appid=${API_KEY}`;
 
   fetch(requestUrlOne)
     .then(function (response) {
